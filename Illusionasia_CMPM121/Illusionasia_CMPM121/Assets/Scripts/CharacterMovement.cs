@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    /*
-    public float speed = 5f;
-    private Rigidbody2D rb;
-    */
     public CharacterController2D controller;
 
     public float runSpeed = 40f;
@@ -17,10 +13,11 @@ public class CharacterMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    private Vector3 start;
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
+        start = transform.position;
     }
 
     // Update is called once per frame
@@ -41,18 +38,19 @@ public class CharacterMovement : MonoBehaviour
         {
             crouch = false;
         }
-        /*
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        Debug.Log(moveHorizontal);
-        Vector2 movement = new Vector2(moveHorizontal, 0);
-
-        rb.AddForce(movement * speed);
-        */
     }
 
     void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Respawn")
+        {
+            transform.position = start;
+        }
     }
 }
