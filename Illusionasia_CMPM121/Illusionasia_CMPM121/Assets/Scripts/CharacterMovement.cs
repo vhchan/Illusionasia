@@ -14,6 +14,10 @@ public class CharacterMovement : MonoBehaviour
     bool crouch = false;
 
     private Vector3 start;
+
+    public static int lightning = 0;
+    public static int thunder = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +55,24 @@ public class CharacterMovement : MonoBehaviour
         if (collision.gameObject.tag == "Respawn")
         {
             transform.position = start;
+        }
+        else if (collision.gameObject.tag == "Lightning")
+        {
+            lightning++;
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.tag == "Thunder")
+        {
+            thunder++;
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.tag == "Finish")
+        {
+            Debug.Log("HFSHNJEK");
+            if (lightning == 1 && thunder == 1)
+            {
+                Debug.Log("Yay you done");
+            }
         }
     }
 }
