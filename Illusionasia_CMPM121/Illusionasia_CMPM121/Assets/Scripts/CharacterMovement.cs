@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public CharacterController2D controller;
+    public static bool winPegasusLevel = false;
 
     public float runSpeed = 40f;
 
@@ -27,6 +28,15 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            winPegasusLevel = true;
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Vector3 pos = new Vector3(-14, 40, -1);
+            transform.position = pos;
+        }
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         if (Input.GetButtonDown("Jump"))
@@ -68,10 +78,13 @@ public class CharacterMovement : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Finish")
         {
-            Debug.Log("HFSHNJEK");
             if (lightning == 1 && thunder == 1)
             {
                 Debug.Log("Yay you done");
+                Destroy(collision.gameObject);
+                winPegasusLevel = true;
+
+
             }
         }
     }

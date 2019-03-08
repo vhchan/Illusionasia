@@ -7,6 +7,8 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
+    public Button start;
+    public Image image;
 
     private Queue<string> sentences;
     // Start is called before the first frame update
@@ -17,6 +19,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        hideButton();
         nameText.text = dialogue.name;
 
         sentences.Clear();
@@ -31,18 +34,39 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (sentences.Count == 1)
         {
             EndDialogue();
-            return;
         }
-
-        string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
+        else if (sentences.Count == 0)
+        {
+            Debug.Log("Do something");
+        }
+        else
+        {
+            string sentence = sentences.Dequeue();
+            dialogueText.text = sentence;
+        }
+        
     }
 
     void EndDialogue()
     {
-        Debug.Log("End of conversation");
+        string sentence = sentences.Dequeue();
+        dialogueText.text = sentence;
+        image.GetComponent<Image>().gameObject.SetActive(false);
+    }
+
+    void hideButton()
+    {
+        start.GetComponent<Button>().gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (CharacterMovement.winPegasusLevel)
+        {
+            image.GetComponent<Image>().gameObject.SetActive(true);
+        }
     }
 }
