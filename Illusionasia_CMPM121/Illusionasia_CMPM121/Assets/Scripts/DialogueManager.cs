@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
         else if (sentences.Count == 0)
         {
             Debug.Log("Do something");
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("GameCentral");
         }
         else
         {

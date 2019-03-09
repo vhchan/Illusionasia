@@ -23,6 +23,6 @@ public class Garden : MonoBehaviour
 
     public void playLevel()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("PegasusLevel");
     }
 }
