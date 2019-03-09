@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class DialogueManager : MonoBehaviour
         else if (sentences.Count == 0)
         {
             Debug.Log("Do something");
+            SceneManager.LoadScene(1);
         }
         else
         {
