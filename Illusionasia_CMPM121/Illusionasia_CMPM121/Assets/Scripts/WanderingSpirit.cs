@@ -21,17 +21,18 @@ public class WanderingSpirit : CharacterAI
     }
     protected override void Update()
     {
-        base.Update();
-        time = Time.fixedUnscaledTime;
-        if (timer <= time)
+        if (CharacterMovement.winPegasusLevel)
         {
-            int chance = Random.Range(0, 10);
-            timer = Random.Range(10.0f, 20.0f) + time;
-            if (CharacterMovement.winPegasusLevel)// && chance > 7)
+            base.Update();
+            time = Time.fixedUnscaledTime;
+            if (timer <= time)
             {
-                Instantiate(spiritEssence, transform.position, Quaternion.identity);
-                //count++;
-                
+                int chance = Random.Range(0, 10);
+                timer = Random.Range(10.0f, 20.0f) + time;
+                if (chance > 7)
+                {
+                    Instantiate(spiritEssence, transform.position, Quaternion.identity);
+                }
             }
         }
         currency.text = "x " + count;

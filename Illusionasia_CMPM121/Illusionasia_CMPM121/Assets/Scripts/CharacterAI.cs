@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterAI : MonoBehaviour
 {
-    private Vector3 target;
+    protected Vector3 target;
     protected float speed = 2.0f;
     private Vector3 scale;
     private Vector3 scaleOpposite;
