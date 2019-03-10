@@ -9,13 +9,14 @@ public class WanderingSpirit : CharacterAI
     private float timer;
     public GameObject spiritEssence;
     public Text currency;
-    private int count = 0;
+    public static int count = 0;
 
     protected override void Start()
     {
         base.Start();
         time = Time.fixedUnscaledTime;
         timer = Random.Range(10.0f, 20.0f) + time;
+        speed = 3.0f;
 
     }
     protected override void Update()
@@ -26,10 +27,10 @@ public class WanderingSpirit : CharacterAI
         {
             int chance = Random.Range(0, 10);
             timer = Random.Range(10.0f, 20.0f) + time;
-            if (CharacterMovement.winPegasusLevel && chance > 7)
+            if (CharacterMovement.winPegasusLevel)// && chance > 7)
             {
                 Instantiate(spiritEssence, transform.position, Quaternion.identity);
-                count++;
+                //count++;
                 
             }
         }
