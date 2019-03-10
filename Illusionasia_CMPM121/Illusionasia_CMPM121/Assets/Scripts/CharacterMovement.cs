@@ -16,13 +16,16 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector3 start;
 
-    public static int lightning = 0;
-    public static int thunder = 0;
+    public static int lightning;// = 0;
+    public static int thunder;// = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         start = transform.position;
+        winPegasusLevel = false;
+        lightning = 0;
+        thunder = 0;
     }
 
     // Update is called once per frame
@@ -30,7 +33,8 @@ public class CharacterMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            winPegasusLevel = true;
+            //winPegasusLevel = true;
+            transform.position = start;
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
