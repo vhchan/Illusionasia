@@ -38,7 +38,7 @@ public class CharacterMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Vector3 pos = new Vector3(-14, 40, -1);
+            Vector3 pos = new Vector3(-14, 50, -1);
             transform.position = pos;
         }
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
